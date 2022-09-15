@@ -1,11 +1,12 @@
 import type { NextPage } from 'next'
-import { Box, Heading, VStack, Text, Image, Grid, useColorModeValue, HStack, Link, SimpleGrid } from '@chakra-ui/react'
+import { Box, Heading, VStack, Text, Image, Grid, useColorModeValue, useColorMode, HStack, Link, SimpleGrid } from '@chakra-ui/react'
 import projects from '@/data/projects'
 import Project from '@/components/project/project'
 import { FaDiscord, FaGithub } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
 
 const Home: NextPage = () => {
+  const { colorMode } = useColorMode()
   const [botGuilds, setBotGuilds] = useState(0)
   const [packageDownloads, setPackageDownloads] = useState(0)
 
@@ -40,8 +41,8 @@ const Home: NextPage = () => {
   const bg2 = useColorModeValue('background.ligth2', 'background.dark2')
 
   return (
-    <Box bg={bg1}>
-      <Box minHeight='100vh'>
+    <Box>
+      <Box bg={bg1} minHeight='75vh'>
         <Grid placeItems='center' pt={[ '5', '32', '56' ]} templateColumns={['1fr', '1fr 1fr']}>
             <Image src='/fietu.png' borderRadius='3xl' boxSize='60' alt='fietu'/>
             <VStack maxWidth={[ '2xl', '3xl', '4xl' ]} pr={[ '0', '0', '40', '60' ]}>
@@ -62,8 +63,11 @@ const Home: NextPage = () => {
           </Grid>
       </Box>
       <Box bg={bg2} minHeight='100vh' id='projects'>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill={ colorMode === 'dark' ? '#13274F': 'white' } fillOpacity="1" d="M0,224L48,218.7C96,213,192,203,288,176C384,149,480,107,576,122.7C672,139,768,213,864,229.3C960,245,1056,203,1152,181.3C1248,160,1344,160,1392,160L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+        </svg>
         <Heading as='h2' fontSize={[ '6xl', '7xl', '8xl' ,'8xl']} textAlign='center' pt='20' pb='10'>Projects</Heading>
-        <Grid placeItems='center'>
+        <Grid placeItems='center' pb='10'>
           <VStack align="start" spacing={8}>
               <SimpleGrid columns={1} spacing={4} mt={8} w="100%">
                 {projects.map(({ id, name, description, img, link, tag, servers, downloads }) => {
