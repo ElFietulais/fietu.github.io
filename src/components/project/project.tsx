@@ -4,12 +4,11 @@ import Image from '@/components/utils/image'
 import { HiOutlineDownload, HiServer } from 'react-icons/hi'
 import { VscGithubAlt } from 'react-icons/vsc'
 
-const project = ({ name, description, img, link, github, tag, servers, downloads }: Props) => {
+const project = ({ name, description, img, link, tag, servers, downloads }: Props) => {
     const { colorMode } = useColorMode()
     const background = useColorModeValue('project.background.ligth', 'project.background.dark')
     const border = useColorModeValue('project.ligthBorder', 'project.darkBorder')
     
-    // boxShadow='inset 0 0 0 200px rgba(255,255,255,0.05)'
     return (
         <Box p='5'>
             <Link href={link} target='_blank' _hover={{ color: 'white' }}>
@@ -39,17 +38,6 @@ const project = ({ name, description, img, link, github, tag, servers, downloads
                             </Text>
                         </VStack>
                     </VStack>
-                    {
-                        github ? (
-                                    <Link pt='10' href={github} target='_blank'>
-                                        <Button colorScheme='gray' variant='outline' >
-                                            <VscGithubAlt size='35px' color='gray' />
-                                        </Button>
-                                        
-                                    </Link>
-                                
-                        ) : null
-                    }
                 </HStack>
             </Link>
         </Box>
@@ -61,7 +49,6 @@ type Props = {
 	description: string;
 	img: string;
 	link: string;
-    github?: string
     tag: string;
     downloads?: number
     servers?: number
