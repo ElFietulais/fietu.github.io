@@ -70,7 +70,7 @@ const Home: NextPage = () => {
         <Grid placeItems='center' pb='10'>
           <VStack align="start" spacing={8}>
               <SimpleGrid columns={1} spacing={4} mt={8} w="100%">
-                {projects.map(({ id, name, description, img, link, tag, servers, downloads }) => {
+                {projects.map(({ id, name, description, img, link, github, tag, servers, downloads }) => {
                   { id === 0 ? servers = botGuilds : downloads = packageDownloads }
                   return (
                     <Project
@@ -79,6 +79,7 @@ const Home: NextPage = () => {
                       description={description}
                       img={img}
                       link={link}
+                      github={github}
                       tag={tag}
                       servers={servers}
                       downloads={downloads}
