@@ -2,12 +2,10 @@
 import { useColorMode, Box, Link, HStack, VStack, Text, Tag, useColorModeValue, Tooltip, Button } from "@chakra-ui/react";
 import Image from '@/components/utils/image'
 import { HiOutlineDownload, HiServer } from 'react-icons/hi'
-import { VscGithubAlt } from 'react-icons/vsc'
 
 const project = ({ name, description, img, link, tag, servers, downloads }: Props) => {
-    const { colorMode } = useColorMode()
-    const background = useColorModeValue('project.background.ligth', 'project.background.dark')
-    const border = useColorModeValue('project.ligthBorder', 'project.darkBorder')
+    const background = useColorModeValue('project.background.light', 'project.background.dark')
+    const border = useColorModeValue('project.border.light', 'project.border.dark')
     
     return (
         <Box p='5'>
