@@ -72,7 +72,13 @@ const Home: NextPage = () => {
           <VStack align="start" spacing={8}>
               <SimpleGrid columns={1} spacing={4} mt={8} w="100%">
                 {projects.map(({ id, name, description, img, link, tag, servers, downloads }) => {
-                  { id === 0 ? servers = botGuilds : downloads = packageDownloads }
+                  { id === 0 && (
+                      servers = botGuilds
+                    )
+                    id === 1 && (
+                      downloads = packageDownloads
+                    )
+                  }
                   return (
                     <Project
                       key={id}

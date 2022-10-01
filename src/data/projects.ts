@@ -15,6 +15,14 @@ const projects: Project[] = [
         link: 'https://www.npmjs.com/package/fietu',
         github: 'https://github.com/ElFietulais/fietu',
         tag: 'package'
+    },
+    {
+        id: 2,
+        name: 'Fietu',
+        description: 'Fietu is an api that makes it easy for you to generate images using Canvas and Jimp.',
+        img: '/fietu.png',
+        link: 'https://www.fietulais.tk',
+        tag: 'API'
     }
 ]
 
@@ -25,7 +33,7 @@ type Project = {
     img: string
     link: string
     github?: string
-    tag: 'package' | 'bot'
+    tag: 'package' | 'bot' | 'API'
     downloads?: number
     servers?: number
 };

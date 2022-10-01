@@ -1,11 +1,12 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { useColorMode, Box, Link, HStack, VStack, Text, Tag, useColorModeValue, Tooltip, Button } from "@chakra-ui/react";
+import { Box, Link, HStack, VStack, Text, Tag, useColorModeValue, Tooltip } from "@chakra-ui/react";
 import Image from '@/components/utils/image'
 import { HiOutlineDownload, HiServer } from 'react-icons/hi'
 
-const project = ({ name, description, img, link, tag, servers, downloads }: Props) => {
+const Project = ({ name, description, img, link, tag, servers, downloads }: Props) => {
     const background = useColorModeValue('project.background.light', 'project.background.dark')
     const border = useColorModeValue('project.border.light', 'project.border.dark')
+    let api = false
+    if (tag === 'API') api = true
     
     return (
         <Box p='5'>
@@ -15,7 +16,6 @@ const project = ({ name, description, img, link, tag, servers, downloads }: Prop
                     <Box position="absolute" opacity={0.25}></Box>
                     <Image src={img} alt={name} height={100} width={100} layout="fixed" rounded="md"></Image>
                 </Box>
-
                     <VStack align='start' justify='flex-start' spacing={1} pt='3.5'>
                         <VStack align="start" >
                             <HStack>
@@ -23,14 +23,17 @@ const project = ({ name, description, img, link, tag, servers, downloads }: Prop
                                     {name}
                                 </Text>
                             </HStack>
-                            <HStack>
-                                { tag === 'package' ? <HiOutlineDownload /> : <HiServer /> }
-                                <Tooltip label={ servers ? 'Guilds' : "last month's downloads" } placement='right-end'>
-                                        <Text pr={2.5}>{servers ?? downloads}</Text>
-                                </Tooltip>
-
-                                <Tag m={5}>{tag}</Tag>
-                            </HStack>
+                            {
+                                api ? <Tag>{tag}</Tag> : (                                  
+                                    <HStack>
+                                        { tag === 'package' ? <HiOutlineDownload /> : <HiServer /> }
+                                        <Tooltip label={ servers ? 'Guilds' : "last month's downloads" } placement='right-end'>
+                                            <Text pr={2.5}>{servers ?? downloads}</Text>
+                                        </Tooltip>     
+                                        <Tag>{tag}</Tag>
+                                    </HStack>                                   
+                                )
+                            }
                             <Text fontSize={[ 'sm' ,'md' ]} >
                                 {description}
                             </Text>
@@ -52,4 +55,4 @@ type Props = {
     servers?: number
 };
 
-export default project
+export default Project

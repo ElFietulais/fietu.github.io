@@ -1,9 +1,8 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { Box, Flex, HStack, useColorModeValue, useColorMode, Icon, IconButton } from "@chakra-ui/react"
 import Image from "@/components/utils/image"
 import { BiSun, BiMoon } from 'react-icons/bi'
 
-const project = () => {
+const Navbar = () => {
     const { colorMode, toggleColorMode } = useColorMode()
     const bg = useColorModeValue('navBar.background.light', 'navBar.background.dark')
     const bottom = useColorModeValue('navBar.bottom.light', 'navBar.bottom.dark')
@@ -19,4 +18,4 @@ const project = () => {
     )
 }
 
-export default project
+export default Navbar
