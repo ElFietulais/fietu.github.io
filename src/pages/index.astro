@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Spotify from "../lib/Spotify";
+
+const spotify = await Spotify.getNowPlaying();
 ---
 
 <Layout title="Home">
@@ -25,42 +28,83 @@ import Layout from "../layouts/Layout.astro";
                     id="content"
                     style="display: none;"
                 >
-                    <div class="relative h-[13.3vw] w-[20vw] p-5">
+                    <div class="relative h-[13.3vw] w-[30vw] p-5">
                         <img src="/cat.png" alt="cat" />
                         <div
-                            class="absolute inset-0 rounded-xl bg-gradient-to-br from-lavender to-transparent opacity-25"
+                            class="absolute inset-0 animate-pulse-slow rounded-xl bg-gradient-to-br from-lavender to-transparent opacity-25"
                         >
                         </div>
                     </div>
-                    <code class="w-[70vw] break-words">
-                        Fietu is a
-                        <span class="uline decoration-peach"
-                            >random programmer</span
-                        >. He likes to program discord bots and tries to make
-                        pretty web pages. He has <span class="text-green"
-                            >+</span
-                        > than a year of experience.
-                        <span class="uline decoration-red"
-                            >(he doesn't know how to make pretty designs)</span
-                        >.
-                    </code>
+                    <div>
+                        <code class="w-[70vw] break-words">
+                            Fietu is a
+                            <span class="uline decoration-peach"
+                                >random programmer</span
+                            >. He likes to program discord bots and tries to
+                            make pretty web pages. He has <span
+                                class="text-green">+</span
+                            > than a year of experience.
+                            <span class="uline decoration-red"
+                                >(he doesn't know how to make pretty designs)</span
+                            >.
+                        </code>
+                        {
+                            spotify && (
+                                <div class="pt-5">
+                                    <div class="flex items-center space-x-1">
+                                        <svg
+                                            class="w-7"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                fill="#a6e3a1"
+                                                d="M17.9 10.9C14.7 9 9.35 8.8 6.3 9.75c-.5.15-1-.15-1.15-.6c-.15-.5.15-1 .6-1.15c3.55-1.05 9.4-.85 13.1 1.35c.45.25.6.85.35 1.3c-.25.35-.85.5-1.3.25m-.1 2.8c-.25.35-.7.5-1.05.25c-2.7-1.65-6.8-2.15-9.95-1.15c-.4.1-.85-.1-.95-.5s.1-.85.5-.95c3.65-1.1 8.15-.55 11.25 1.35c.3.15.45.65.2 1m-1.2 2.75c-.2.3-.55.4-.85.2c-2.35-1.45-5.3-1.75-8.8-.95c-.35.1-.65-.15-.75-.45c-.1-.35.15-.65.45-.75c3.8-.85 7.1-.5 9.7 1.1c.35.15.4.55.25.85M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"
+                                            />
+                                        </svg>
+                                        <a
+                                            class="text-green"
+                                            href={spotify.url}
+                                            target="_blank"
+                                        >
+                                            {spotify.name}
+                                        </a>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </div>
                 </div>
                 <div
                     class="flex animate-pulse items-center justify-between space-x-10 px-6 pb-8 pt-10"
                     id="skeleton"
                 >
-                    <div class="h-[13.3vw] w-[20vw] rounded-xl bg-lavender/25">
+                    <div
+                        class="h-[13.3vw] w-[20vw] rounded-xl bg-lavender/25 p-5"
+                    >
                     </div>
                     <div class="w-[70vw]">
-                        <div class="mb-3 h-4 w-4/5 rounded-full bg-lavender/25">
-                        </div>
                         <div
-                            class="mb-3 h-4 w-11/12 rounded-full bg-lavender/25"
+                            class="my-1.5 h-4 w-4/5 rounded-full bg-lavender/25"
                         >
                         </div>
                         <div
-                            class="mb-3 h-4 w-9/12 rounded-full bg-lavender/25"
+                            class="my-1.5 h-4 w-11/12 rounded-full bg-lavender/25"
                         >
+                        </div>
+                        <div
+                            class="my-1.5 h-4 w-9/12 rounded-full bg-lavender/25"
+                        >
+                        </div>
+                        <div class="pt-5">
+                            <div class="flex items-center space-x-1">
+                                <div class="rounded-full bg-lavender/25 p-4">
+                                </div>
+                                <div
+                                    class="my-1.5 h-4 w-1/6 rounded-full bg-lavender/25"
+                                >
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -3,16 +3,14 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
-			skeletonScreen: {
-				color: '#374151',
-				borderRadius: "4px"
-			  }
+			animation: {
+				'pulse-slow': 'pulse 10s cubic-bezier(0.4, 0, 0.6, 1) infinite;'
+			}
 		},
 	},
 	plugins: [
 		require("@catppuccin/tailwindcss")({
 			defaultFlavour: "mocha",
-		  }),
-		require("tailwindcss-skeleton-screen")
+		  })
 	],
 }
