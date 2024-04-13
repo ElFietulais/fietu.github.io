@@ -9,7 +9,7 @@ const spotify = await Spotify.getNowPlaying();
     <main class="flex h-[100vh] items-center">
         <div class="flex justify-center">
             <div
-                class="w-2/3 rounded-xl border-4 border-lavender/50 bg-mantle/50 px-8 py-5 shadow-2xl shadow-lavender/20 backdrop-blur-md"
+                class="w-11/12 rounded-xl border-4 border-lavender/50 bg-mantle/50 px-8 py-5 shadow-2xl shadow-lavender/20 backdrop-blur-md sm:w-2/3"
             >
                 <div class="flex justify-between">
                     <h1
@@ -24,11 +24,13 @@ const spotify = await Spotify.getNowPlaying();
                     </div>
                 </div>
                 <div
-                    class="items-center justify-between space-x-10 px-6 pb-8 pt-10"
+                    class="sm:items-center sm:justify-between sm:space-x-10 sm:px-6 sm:pb-8 sm:pt-10"
                     id="content"
                     style="display: none;"
                 >
-                    <div class="relative h-[13.3vw] w-[30vw] p-5">
+                    <div
+                        class="relative my-5 flex w-full items-center p-5 sm:my-0 sm:h-[13.3vw] sm:w-[30vw]"
+                    >
                         <img src="/cat.png" alt="cat" />
                         <div
                             class="absolute inset-0 animate-pulse-slow rounded-xl bg-gradient-to-br from-lavender to-transparent opacity-25"
@@ -36,7 +38,9 @@ const spotify = await Spotify.getNowPlaying();
                         </div>
                     </div>
                     <div>
-                        <code class="w-[70vw] break-words">
+                        <code
+                            class="break-words text-sm sm:w-[70vw] sm:text-lg"
+                        >
                             Fietu is a
                             <span class="uline decoration-peach"
                                 >random programmer</span
@@ -50,7 +54,7 @@ const spotify = await Spotify.getNowPlaying();
                         </code>
                         {
                             spotify && (
-                                <div class="pt-5">
+                                <div class="flex justify-center pt-5 sm:justify-normal">
                                     <div class="flex items-center space-x-1">
                                         <svg
                                             class="w-7"
@@ -76,14 +80,14 @@ const spotify = await Spotify.getNowPlaying();
                     </div>
                 </div>
                 <div
-                    class="flex animate-pulse items-center justify-between space-x-10 px-6 pb-8 pt-10"
+                    class="animate-pulse sm:flex sm:items-center sm:justify-between sm:space-x-10 sm:px-6 sm:pb-8 sm:pt-10"
                     id="skeleton"
                 >
                     <div
-                        class="h-[13.3vw] w-[20vw] rounded-xl bg-lavender/25 p-5"
+                        class="my-5 h-[80vw] w-[75vw] rounded-xl bg-lavender/25 p-5 sm:my-0 sm:h-[13.3vw] sm:w-[20vw]"
                     >
                     </div>
-                    <div class="w-[70vw]">
+                    <div class="w-[81vw] sm:w-[70vw]">
                         <div
                             class="my-1.5 h-4 w-4/5 rounded-full bg-lavender/25"
                         >
@@ -96,7 +100,7 @@ const spotify = await Spotify.getNowPlaying();
                             class="my-1.5 h-4 w-9/12 rounded-full bg-lavender/25"
                         >
                         </div>
-                        <div class="pt-5">
+                        <div class="flex justify-center pt-5 sm:justify-normal">
                             <div class="flex items-center space-x-1">
                                 <div class="rounded-full bg-lavender/25 p-4">
                                 </div>
@@ -124,6 +128,6 @@ const spotify = await Spotify.getNowPlaying();
         const content = document.getElementById("content");
 
         skeleton!.style.display = "none";
-        content!.style.display = "flex";
+        content!.style.display = window.innerWidth >= 640 ? "flex" : "block";
     }, 2500);
 </script>
