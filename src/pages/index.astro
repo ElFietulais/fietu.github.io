@@ -1,15 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Spotify from "../lib/Spotify";
-
-const spotify = await Spotify.getNowPlaying();
+import socials from "../lib/socials";
 ---
 
 <Layout title="Home">
-    <main class="flex h-[100vh] items-center">
+    <main class="my-10 flex h-[100vh] items-center sm:my-0">
         <div class="flex justify-center">
             <div
-                class="w-11/12 rounded-xl border-4 border-lavender/50 bg-mantle/50 px-8 py-5 shadow-2xl shadow-lavender/20 backdrop-blur-md sm:w-2/3"
+                class="w-11/12 rounded-xl border-4 border-lavender/50 bg-mantle/50 px-8 py-5 shadow-2xl shadow-lavender/20 backdrop-blur sm:w-2/3"
             >
                 <div class="flex justify-between">
                     <h1
@@ -23,92 +21,130 @@ const spotify = await Spotify.getNowPlaying();
                         <div class="rounded-full bg-red p-2"></div>
                     </div>
                 </div>
-                <div
-                    class="sm:items-center sm:justify-between sm:space-x-10 sm:px-6 sm:pb-8 sm:pt-10"
-                    id="content"
-                    style="display: none;"
-                >
+                <div id="content" style="display: none;">
                     <div
-                        class="relative my-5 flex w-full items-center p-5 sm:my-0 sm:h-[13.3vw] sm:w-[30vw]"
+                        class="sm:flex sm:items-center sm:justify-between sm:space-x-10 sm:px-6 sm:pb-8 sm:pt-10"
                     >
-                        <img src="/cat.png" alt="cat" />
                         <div
-                            class="absolute inset-0 animate-pulse-slow rounded-xl bg-gradient-to-br from-lavender to-transparent opacity-25"
+                            class="relative my-5 flex w-full items-center p-5 sm:my-0 sm:h-[13.3vw] sm:w-[30vw]"
                         >
+                            <img src="/cat.png" alt="cat" />
+                            <div
+                                class="absolute inset-0 animate-pulse-slow rounded-xl bg-gradient-to-br from-lavender to-transparent opacity-25"
+                            >
+                            </div>
+                        </div>
+                        <div>
+                            <code
+                                class="break-words text-sm sm:w-[70vw] sm:text-lg"
+                            >
+                                Fietu is a
+                                <span class="uline decoration-peach"
+                                    >random programmer</span
+                                >. He likes to program discord bots and tries to
+                                make pretty web pages. He has <span
+                                    class="text-green">+</span
+                                > than a year of experience.
+                                <span class="uline decoration-red"
+                                    >(he doesn't know how to make pretty
+                                    designs)</span
+                                >.
+                            </code>
                         </div>
                     </div>
-                    <div>
-                        <code
-                            class="break-words text-sm sm:w-[70vw] sm:text-lg"
-                        >
-                            Fietu is a
-                            <span class="uline decoration-peach"
-                                >random programmer</span
-                            >. He likes to program discord bots and tries to
-                            make pretty web pages. He has <span
-                                class="text-green">+</span
-                            > than a year of experience.
-                            <span class="uline decoration-red"
-                                >(he doesn't know how to make pretty designs)</span
-                            >.
-                        </code>
-                        {
-                            spotify && (
-                                <div class="flex justify-center pt-5 sm:justify-normal">
-                                    <div class="flex items-center space-x-1">
-                                        <svg
-                                            class="w-7"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                fill="#a6e3a1"
-                                                d="M17.9 10.9C14.7 9 9.35 8.8 6.3 9.75c-.5.15-1-.15-1.15-.6c-.15-.5.15-1 .6-1.15c3.55-1.05 9.4-.85 13.1 1.35c.45.25.6.85.35 1.3c-.25.35-.85.5-1.3.25m-.1 2.8c-.25.35-.7.5-1.05.25c-2.7-1.65-6.8-2.15-9.95-1.15c-.4.1-.85-.1-.95-.5s.1-.85.5-.95c3.65-1.1 8.15-.55 11.25 1.35c.3.15.45.65.2 1m-1.2 2.75c-.2.3-.55.4-.85.2c-2.35-1.45-5.3-1.75-8.8-.95c-.35.1-.65-.15-.75-.45c-.1-.35.15-.65.45-.75c3.8-.85 7.1-.5 9.7 1.1c.35.15.4.55.25.85M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"
-                                            />
-                                        </svg>
-                                        <a
-                                            class="text-green"
-                                            href={spotify.url}
-                                            target="_blank"
-                                        >
-                                            {spotify.name}
-                                        </a>
-                                    </div>
-                                </div>
-                            )
-                        }
+                    <div class="flex items-center justify-center">
+                        <button id="arrow">
+                            <svg
+                                class="w-12 animate-bounce"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                ><path
+                                    fill="#b4befe"
+                                    fill-rule="evenodd"
+                                    d="M7 9a1 1 0 0 0-.707 1.707l5 5a1 1 0 0 0 1.414 0l5-5A1 1 0 0 0 17 9z"
+                                    clip-rule="evenodd"></path></svg
+                            >
+                        </button>
                     </div>
                 </div>
                 <div
-                    class="animate-pulse sm:flex sm:items-center sm:justify-between sm:space-x-10 sm:px-6 sm:pb-8 sm:pt-10"
-                    id="skeleton"
+                    class="sm:px-6 sm:pb-8 sm:pt-10"
+                    id="about"
+                    style="display: none;"
                 >
-                    <div
-                        class="my-5 h-[80vw] w-[75vw] rounded-xl bg-lavender/25 p-5 sm:my-0 sm:h-[13.3vw] sm:w-[20vw]"
-                    >
+                    <div>
+                        <h2 class="py-5 text-xl font-extrabold">
+                            About <span class="text-lavender">Me</span>
+                        </h2>
+                        <div class="break-words text-sm sm:pl-10 sm:text-lg">
+                            <code>
+                                I'm <span class="uline decoration-teal">16</span
+                                > years old, I'm <span
+                                    class="uline decoration-yellow"
+                                    >Colombian</span
+                                >, I like to play sports (especially <span
+                                    class="uline decoration-rosewater"
+                                    >soccer</span
+                                >).
+                            </code>
+                            <br />
+                            <code>
+                                I've been programming for about 2 years, focused
+                                on <span class="uline decoration-blue"
+                                    >discord bots</span
+                                > and <span class="uline decoration-sapphire"
+                                    >image generation</span
+                                >.
+                            </code>
+                        </div>
                     </div>
-                    <div class="w-[81vw] sm:w-[70vw]">
+                    <div>
+                        <h2 class="py-5 text-xl font-extrabold">
+                            Awesome <span class="text-lavender">Links</span>
+                        </h2>
+                        <ul class="list-inside list-disc sm:pl-10">
+                            {
+                                socials.map(({ name, url }) => {
+                                    return (
+                                        <li>
+                                            <a href={url} target="_blank">
+                                                <code>{name}</code>
+                                            </a>
+                                        </li>
+                                    );
+                                })
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="animate-pulse" id="skeleton">
+                    <div
+                        class="sm:flex sm:items-center sm:justify-between sm:space-x-10 sm:px-6 sm:pb-8 sm:pt-10"
+                    >
                         <div
-                            class="my-1.5 h-4 w-4/5 rounded-full bg-lavender/25"
+                            class="my-5 h-[80vw] w-[75vw] rounded-xl bg-lavender/25 p-5 sm:my-0 sm:h-[13.3vw] sm:w-[20vw]"
                         >
                         </div>
-                        <div
-                            class="my-1.5 h-4 w-11/12 rounded-full bg-lavender/25"
-                        >
-                        </div>
-                        <div
-                            class="my-1.5 h-4 w-9/12 rounded-full bg-lavender/25"
-                        >
-                        </div>
-                        <div class="flex justify-center pt-5 sm:justify-normal">
-                            <div class="flex items-center space-x-1">
-                                <div class="rounded-full bg-lavender/25 p-4">
-                                </div>
-                                <div
-                                    class="my-1.5 h-4 w-1/6 rounded-full bg-lavender/25"
-                                >
-                                </div>
+                        <div class="w-[81vw] sm:w-[70vw]">
+                            <div
+                                class="my-1.5 h-4 w-4/5 rounded-full bg-lavender/25"
+                            >
                             </div>
+                            <div
+                                class="my-1.5 h-4 w-11/12 rounded-full bg-lavender/25"
+                            >
+                            </div>
+                            <div
+                                class="my-1.5 h-4 w-9/12 rounded-full bg-lavender/25"
+                            >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center pt-3">
+                        <div
+                            class="animate-bounce rounded-full bg-lavender/25 p-3.5"
+                        >
                         </div>
                     </div>
                 </div>
@@ -124,10 +160,18 @@ const spotify = await Spotify.getNowPlaying();
 </style>
 <script>
     setTimeout(() => {
-        const skeleton = document.getElementById("skeleton");
-        const content = document.getElementById("content");
-
-        skeleton!.style.display = "none";
-        content!.style.display = window.innerWidth >= 640 ? "flex" : "block";
+        changeDisplay("skeleton", "none");
+        changeDisplay("content", "block");
     }, 2500);
+
+    const arrow = document.querySelector("#arrow") as HTMLElement;
+    arrow.addEventListener("click", () => {
+        changeDisplay("about", "block");
+        arrow.style.display = "none";
+    });
+
+    function changeDisplay(elementId: string, display: string) {
+        const element = document.getElementById(elementId) as HTMLElement;
+        element.style.display = display;
+    }
 </script>
